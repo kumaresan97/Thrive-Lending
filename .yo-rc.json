@@ -1,7 +1,7 @@
 {
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
-    "isCreatingSolution": true,
+    "isCreatingSolution": false,
     "version": "1.14.0",
     "libraryName": "thrive-lending",
     "libraryId": "cc2fde80-9a38-4f28-9fba-2256ca77901f",
