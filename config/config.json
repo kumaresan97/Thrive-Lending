@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/thriveLending/ThriveLendingWebPart.manifest.json"
         }
       ]
+    },
+    "loan-products-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/loanProducts/LoanProductsWebPart.js",
+          "manifest": "./src/webparts/loanProducts/LoanProductsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "ThriveLendingWebPartStrings": "lib/webparts/thriveLending/loc/{locale}.js"
+    "ThriveLendingWebPartStrings": "lib/webparts/thriveLending/loc/{locale}.js",
+    "LoanProductsWebPartStrings": "lib/webparts/loanProducts/loc/{locale}.js"
   }
 }
