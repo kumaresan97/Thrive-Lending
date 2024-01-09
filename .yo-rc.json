@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "thrive-lending",
+    "libraryId": "cc2fde80-9a38-4f28-9fba-2256ca77901f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Thrive Lending",
+    "solutionShortDescription": "Thrive Lending description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

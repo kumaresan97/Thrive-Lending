@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "thrive-lending-client-side-solution",
+    "id": "cc2fde80-9a38-4f28-9fba-2256ca77901f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Thrive Lending description"
+      },
+      "longDescription": {
+        "default": "Thrive Lending description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "thrive-lending Feature",
+        "description": "The feature that activates elements of the thrive-lending solution.",
+        "id": "7e6c330b-05cd-482c-b804-ec9867aaedb8",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/thrive-lending.sppkg"
+  }
+}

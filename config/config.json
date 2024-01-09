@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "thrive-lending-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/thriveLending/ThriveLendingWebPart.js",
+          "manifest": "./src/webparts/thriveLending/ThriveLendingWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ThriveLendingWebPartStrings": "lib/webparts/thriveLending/loc/{locale}.js"
+  }
+}
