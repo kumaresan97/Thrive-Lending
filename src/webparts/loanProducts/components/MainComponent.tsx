@@ -149,7 +149,7 @@ const MainComponent = (props: any): JSX.Element => {
             />
           </div>
         </Modal>
-        <h4 style={{ fontSize: "18px", margin: "14px 0px" }}>
+        <h4 style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
           Standard Loan Products
         </h4>
         <div
@@ -251,7 +251,7 @@ const MainComponent = (props: any): JSX.Element => {
         {/* nonstandard */}
 
         <div>
-          <h4 style={{ fontSize: "18px", margin: "14px 0px" }}>
+          <h4 style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
             Non-Standard Loan Products
           </h4>
           <div
