@@ -56,8 +56,8 @@ const Partners = (props) => {
     <>
       <div className={styles.Overall}>
         <div>
-          <p style={{ fontSize: "18px", margin: "10px 0px" }}>
-            <b>Partners</b>
+          <p style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
+            Partners
           </p>
         </div>
 
