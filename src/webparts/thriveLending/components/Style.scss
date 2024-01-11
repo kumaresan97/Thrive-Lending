@@ -12,3 +12,11 @@
 .report-style-class {
   height: 100vh;
 }
+
+@font-face {
+  font-family: 'Gotham-bold';
+  src: url('../../../ExternalRef/Fonts/GothamBold.ttf'); /* Specify the correct path and format for your font file */
+  font-weight: bold;
+  font-style: normal;
+}
+

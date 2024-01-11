@@ -95,7 +95,7 @@ const Partners = (props) => {
                       }}
                     >
                       <img
-                        src={val.Image[0]?.serverRelativeUrl}
+                        src={val.Image.length?val.Image[0].serverRelativeUrl:""}
                         style={{ width: "100%", height: "100%" }}
                       />
                     </div>
@@ -103,8 +103,8 @@ const Partners = (props) => {
                       style={{
                         margin: "5px 0px 0px 0px",
                         color: "#666155",
-                        fontWeight: 600,
-                        fontSize: "18px",
+                        // fontWeight: 600,
+                        // fontSize: "18px",
                       }}
                     >
                       {val.Title}
@@ -141,21 +141,22 @@ const Partners = (props) => {
             },
           }}
         >
-          <div style={{ width: "120px", marginBottom: 14 }}>
+          <div  style={{ width: "120px", marginBottom: 14 }}>
             <img
               src={selectedItems.Title}
               alt=""
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              style={{ width: "50%", height: "100%", objectFit: "cover" }}
             />
           </div>
-          <div style={{ maxHeight: 192, overflowY: "auto" }}>
+          <div className={styles.modalboxP} style={{ maxHeight: 192, overflowY: "auto" }}>
             <p
               style={{
                 margin: 0,
                 lineHeight: "22px",
                 color: "#000000",
-                fontSize: "17px",
-                fontWeight: 450,
+                // fontSize: "17px",
+                // fontWeight: 450,
+                // fontFamily:"sans-serif"
               }}
             >
               {selectedItems.Description}
@@ -196,6 +197,10 @@ const Partners = (props) => {
                   background: "#D29602",
                   border: "none",
                   borderRadius: "4px",
+                  ":active":{
+                    background: "rgb(210 150 2 / 44%) !important",
+                    border:"1px solid  rgb(210 150 2 / 44%)  !important",
+                  }
                 },
                 rootHovered: {
                   border: "none",
@@ -207,6 +212,8 @@ const Partners = (props) => {
               }}
               onClick={() => {
                 if (selectedItems.Url) {
+                  console.log(selectedItems.Url);
+                  
                   window.open(selectedItems.Url, "_blank");
                 }
               }}
