@@ -20,7 +20,7 @@
   .Container {
     display: flex;
     flex-wrap: wrap;
-    gap:16px;
+    gap: 16px;
     align-items: center;
     .Box {
       width: 24%;
@@ -39,7 +39,20 @@
 .modalboxP {
   p {
     font-family: "Gotham-light";
-    font-weight:600;
+    font-weight: 600;
     font-size: 16px;
   }
+}
+.modalboxP::-webkit-scrollbar {
+  width: 13px;
+}
+
+.modalboxP::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 8px;
+}
+
+.modalboxP::-webkit-scrollbar-thumb {
+  background: #8e8e8e;
+  border-radius: 8px;
 }
