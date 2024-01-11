@@ -1,17 +1,45 @@
+@font-face {
+  font-family: "Gotham-bold";
+  src: url("../../../ExternalRef/Fonts/GothamBold.ttf"); /* Specify the correct path and format for your font file */
+}
+@font-face {
+  font-family: "Gotham-medium";
+  src: url("../../../ExternalRef/Fonts/GothamMedium_1.ttf"); /* Specify the correct path and format for your font file */
+}
+@font-face {
+  font-family: "Gotham-light";
+  src: url("../../../ExternalRef/Fonts/GothamLight.ttf"); /* Specify the correct path and format for your font file */
+}
+
 .Overall {
   background-color: #fff8f8;
   padding: 10px;
-
+  p {
+    font-family: "Gotham-medium";
+  }
   .Container {
     display: flex;
     flex-wrap: wrap;
+    gap:16px;
     align-items: center;
     .Box {
       width: 24%;
-      margin: 0px 10px 10px 0px;
+      // margin: 0px 10px 10px 0px;
       background-image: linear-gradient(to right, #d29602, #d2960280);
-      height: 180px;
+      height: 160px;
       border-radius: 5px;
+      p {
+        font-family: "Gotham-light";
+        font-weight: 600;
+        font-size: 16px;
+      }
     }
+  }
+}
+.modalboxP {
+  p {
+    font-family: "Gotham-light";
+    font-weight:600;
+    font-size: 16px;
   }
 }

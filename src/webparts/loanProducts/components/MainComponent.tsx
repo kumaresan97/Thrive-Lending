@@ -4,7 +4,7 @@ import SPServices from "../../config/SPServices";
 import { ILoanproducts } from "../../config/config";
 import styles from "./LoanProducts.module.scss";
 import "./style.css";
-import { DefaultButton, Dialog, Label, Modal } from "@fluentui/react";
+import { DefaultButton, Dialog, Label, Modal, PrimaryButton } from "@fluentui/react";
 let ListName = "LoanProducts";
 const MainComponent = (props: any): JSX.Element => {
   const [loanProducts, setLoanProducts] = useState({
@@ -14,6 +14,7 @@ const MainComponent = (props: any): JSX.Element => {
   const [selectedItems, setSelectedItems] = useState({
     Title: "",
     Description: "",
+    Url:"",
   });
   const [isopen, setIsopen] = useState(false);
 
@@ -21,7 +22,6 @@ const MainComponent = (props: any): JSX.Element => {
     SPServices.SPReadItems({
       Listname: ListName,
       Select: "*,AttachmentFiles",
-
       Expand: "AttachmentFiles",
       Orderby: "Created",
       Orderbydecorasc: false,
@@ -39,9 +39,9 @@ const MainComponent = (props: any): JSX.Element => {
           });
           if (val.LoanTypes == "Standard Loan Products") {
             standarddatas.push({
-              Title: val.Title,
-              Description: val.Description,
-              URL: val.URL,
+              Title: val?.Title,
+              Description: val?.Description,
+              URL: val?.URL,
               Image: arrGetAttach,
 
               //   Image: JSON.parse(val.ProductIcon).serverRelativeUrl,
@@ -50,13 +50,13 @@ const MainComponent = (props: any): JSX.Element => {
             });
           } else {
             nonstandarddatas.push({
-              Title: val.Title,
-              Description: val.Description,
-              URL: val.URL,
+              Title: val?.Title,
+              Description: val?.Description,
+              URL: val?.URL,
               //   Image: JSON.parse(val.ProductIcon).serverRelativeUrl,
               Image: arrGetAttach,
               //   Image: "",
-              LoanTtype: val.LoanTypes,
+              LoanTtype: val?.LoanTypes,
             });
           }
         });
@@ -73,9 +73,6 @@ const MainComponent = (props: any): JSX.Element => {
           Standard: standarddatas,
           nonStandard: nonstandarddatas,
         });
-
-        console.log(res);
-        console.log(loanProducts);
       })
       .catch((err) => {
         console.log(err);
@@ -94,27 +91,28 @@ const MainComponent = (props: any): JSX.Element => {
           styles={{
             main: {
               width: "40%",
-              minHeight: "250px",
-              padding: "15px 20px",
+              borderRadius: "5px",
+              padding: "16px 24px",
             },
           }}
         >
-          <h4
+          <h4 className={styles.modelh4}
             style={{
-              margin: "0px 0px 10px 0px",
-              color: "#D29806",
-              fontSize: "16px",
+              // margin: "0px 0px 10px 0px",
+              // color: "#D29806",
+              // fontSize: "16px",
             }}
           >
             {selectedItems.Title}
           </h4>
-          <div style={{ height: "140px", overflowY: "auto" }}>
+          <div className={styles.modalboxP} style={{ maxHeight: 192, overflowY: "auto" }}>
             <p
               style={{
                 margin: 0,
-                color: "#666155",
-                fontSize: "14px",
-                fontWeight: 400,
+                color: "#000000",
+                lineHeight: "22px",
+                // fontSize: "17px",
+                // fontWeight: 450,
               }}
             >
               {selectedItems.Description}
@@ -125,7 +123,8 @@ const MainComponent = (props: any): JSX.Element => {
             style={{
               display: "flex",
               justifyContent: "end",
-              marginTop: "20px",
+              gap:"10px",
+              marginTop: "16px",
             }}
           >
             <DefaultButton
@@ -137,6 +136,7 @@ const MainComponent = (props: any): JSX.Element => {
                   color: "#FFFFFF",
                   fontSize: "15px",
                   fontWeight: 400,
+                
                 },
                 rootHovered: {
                   color: "#FFFFFF",
@@ -147,11 +147,40 @@ const MainComponent = (props: any): JSX.Element => {
                 setIsopen(false);
               }}
             />
+            <PrimaryButton 
+              text="Open"
+              iconProps={{ iconName: "OpenInNewWindow" }}
+              styles={{
+                root: {
+                  background: "#D29602",
+                  border: "none",
+                  borderRadius: "4px",
+                  ":active":{
+                    background: "rgb(210 150 2 / 44%) !important",
+                    border:"1px solid  rgb(210 150 2 / 44%)  !important",
+                  }
+                },
+                rootHovered: {
+                  border: "none",
+                  background: "#D29602",
+                },
+                flexContainer: {
+                  flexDirection: "row-reverse",
+                },
+              }}
+              onClick={() => {
+                if (selectedItems.Url) {                  
+                  window.open(selectedItems.Url, "_blank");
+                }
+              }}
+            />
           </div>
         </Modal>
-        <h4 style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
+
+
+        <h5 style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
           Standard Loan Products
-        </h4>
+        </h5>
         <div
           className={styles.Container}
           //   style={{
@@ -189,6 +218,7 @@ const MainComponent = (props: any): JSX.Element => {
                       setIsopen(true);
                       (selectedItems.Title = val.Title),
                         (selectedItems.Description = val.Description);
+                        (selectedItems.Url = val.URL);
                       setSelectedItems({ ...selectedItems });
                     }}
                   >
@@ -224,8 +254,8 @@ const MainComponent = (props: any): JSX.Element => {
                       style={{
                         margin: "5px 0px 0px 0px",
                         color: "#666155",
-                        fontSize: "16px",
                         fontWeight: 600,
+                        fontSize: "18px",
                       }}
                     >
                       {val.Title}
@@ -251,9 +281,9 @@ const MainComponent = (props: any): JSX.Element => {
         {/* nonstandard */}
 
         <div>
-          <h4 style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
+          <h5 style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
             Non-Standard Loan Products
-          </h4>
+          </h5>
           <div
             className={styles.Container}
             // style={{
@@ -290,7 +320,8 @@ const MainComponent = (props: any): JSX.Element => {
                       onClick={() => {
                         setIsopen(true);
                         (selectedItems.Title = val.Title),
-                          (selectedItems.Description = val.Description);
+                        (selectedItems.Url=val.URL)(
+                          (selectedItems.Description = val.Description));
                         setSelectedItems({ ...selectedItems });
                       }}
                     >
@@ -327,8 +358,8 @@ const MainComponent = (props: any): JSX.Element => {
                         style={{
                           margin: "5px 0px 0px 0px",
                           color: "#666155",
-                          fontSize: "16px",
-                          fontWeight: 600,
+                          // fontSize: "16px",
+                          // fontWeight: 600,
                         }}
                       >
                         {val.Title}
