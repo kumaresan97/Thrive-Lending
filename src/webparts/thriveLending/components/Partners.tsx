@@ -16,6 +16,7 @@ const Partners = (props) => {
     Url: "",
   });
   const [isopen, setIsopen] = useState(false);
+  
   const fetchData = async () => {
     SPServices.SPReadItems({
       Listname: ListName,
@@ -90,7 +91,8 @@ const Partners = (props) => {
                         width: "175px",
                         height: "80px",
                         padding: "10px",
-                        backgroundColor: "#efd9a5",
+                       // backgroundColor: "#efd9a5",
+                       backgroundColor:"transparent",
                         borderRadius: "5px",
                       }}
                     >
@@ -135,9 +137,10 @@ const Partners = (props) => {
           isOpen={isopen}
           styles={{
             main: {
-              width: "40%",
+              width: "75%",
               borderRadius: "5px",
               padding: "16px 24px",
+              height:"75vh",
             },
           }}
         >
@@ -148,7 +151,7 @@ const Partners = (props) => {
               style={{ width: "50%", height: "100%", objectFit: "cover" }}
             />
           </div>
-          <div className={styles.modalboxP} style={{ maxHeight: 192, overflowY: "auto" }}>
+          <div className={styles.modalboxP} style={{ maxHeight: 350, overflowY: "auto" }}>
             <p
               style={{
                 margin: 0,

@@ -231,7 +231,8 @@ const MainComponent = (props: any): JSX.Element => {
                         alignItems: "center",
                         justifyContent: "center",
                         // padding: "15px 15px",
-                        backgroundColor: "rgb(255,255,255,0.5)",
+                        //backgroundColor: "rgb(255,255,255,0.5)",
+                        backgroundColor:"transparent",
                         borderRadius: "5px",
                       }}
                     >
@@ -333,8 +334,9 @@ const MainComponent = (props: any): JSX.Element => {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
+                          backgroundColor:"transparent",
                           // padding: "15px 15px",
-                          backgroundColor: "rgb(255,255,255,0.5)",
+                          //backgroundColor: "rgb(255,255,255,0.5)",
                           borderRadius: "5px",
                         }}
                       >
