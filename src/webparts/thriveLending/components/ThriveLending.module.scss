@@ -12,7 +12,8 @@
 }
 
 .Overall {
-  background-color: #fff8f8;
+ // background-color: #fff8f8;
+ background-color: white;
   padding: 10px;
   p {
     font-family: "Gotham-medium";
@@ -23,10 +24,11 @@
     gap: 16px;
     align-items: center;
     .Box {
-      width: 24%;
+      width: 19%;
       // margin: 0px 10px 10px 0px;
       //background-image: linear-gradient(to right, #d29602, #d2960280);
-      background-color: #D3D3D3;
+      //background-color: #D3D3D3;
+      background-color: white;
       height: 160px;
       border-radius: 5px;
       p {
