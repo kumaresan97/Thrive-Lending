@@ -76,6 +76,8 @@ const Partners = (props) => {
                       flexDirection: "column",
                       textAlign: "center",
                       cursor: "pointer",
+                      border:"1px solid black",
+                      borderRadius:"8px",
                     }}
                     onClick={() => {
                       setIsopen(true);
@@ -141,6 +143,7 @@ const Partners = (props) => {
               borderRadius: "5px",
               padding: "16px 24px",
               height:"75vh",
+              position:"relative"
             },
           }}
         >
@@ -148,16 +151,17 @@ const Partners = (props) => {
             <img
               src={selectedItems.Title}
               alt=""
-              style={{ width: "50%", height: "100%", objectFit: "cover" }}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
-          <div className={styles.modalboxP} style={{ maxHeight: 350, overflowY: "auto" }}>
+          <div className={styles.modalboxP} style={{ maxHeight: 400, overflowY: "auto" }}>
             <p
               style={{
                 margin: 0,
                 lineHeight: "22px",
                 color: "#000000",
-                // fontSize: "17px",
+                 fontSize: "15px",
+                 textAlign:"justify"
                 // fontWeight: 450,
                 // fontFamily:"sans-serif"
               }}
@@ -171,7 +175,10 @@ const Partners = (props) => {
               display: "flex",
               justifyContent: "end",
               gap: "10px",
-              marginTop: "16px",
+              // marginTop: "100px",
+              position:"absolute",
+              bottom:"15px",
+              right:"20px"
             }}
           >
             <DefaultButton

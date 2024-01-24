@@ -60,7 +60,7 @@ const MainComponent = (props: any): JSX.Element => {
             });
           }
         });
-        debugger;
+      
         // datas.forEach((val: any) => {
         //   if (val.LoanTtype == "Standard Loan Products") {
         //     setLoanProducts({ ...loanProducts, Standard: val });
@@ -90,13 +90,15 @@ const MainComponent = (props: any): JSX.Element => {
           isOpen={isopen}
           styles={{
             main: {
-              width: "40%",
+              width: "75%",
               borderRadius: "5px",
               padding: "16px 24px",
+              height:"75vh",
+              position:"relative"
             },
           }}
         >
-          <h4 className={styles.modelh4}
+          <h2 className={styles.modelh4}
             style={{
               // margin: "0px 0px 10px 0px",
               // color: "#D29806",
@@ -104,14 +106,15 @@ const MainComponent = (props: any): JSX.Element => {
             }}
           >
             {selectedItems.Title}
-          </h4>
+          </h2>
           <div className={styles.modalboxP} style={{ maxHeight: 192, overflowY: "auto" }}>
             <p
               style={{
                 margin: 0,
                 color: "#000000",
                 lineHeight: "22px",
-                // fontSize: "17px",
+                 fontSize: "15px",
+                 textAlign:"justify"
                 // fontWeight: 450,
               }}
             >
@@ -124,7 +127,10 @@ const MainComponent = (props: any): JSX.Element => {
               display: "flex",
               justifyContent: "end",
               gap:"10px",
-              marginTop: "16px",
+             // marginTop: "16px",
+             position:"absolute",
+             bottom:"15px",
+             right:"20px"
             }}
           >
             <DefaultButton
@@ -213,6 +219,8 @@ const MainComponent = (props: any): JSX.Element => {
                       flexDirection: "column",
                       textAlign: "center",
                       cursor: "pointer",
+                      borderRadius:"8px",
+                      border:"1px solid black"
                     }}
                     onClick={() => {
                       setIsopen(true);
@@ -317,6 +325,8 @@ const MainComponent = (props: any): JSX.Element => {
                         flexDirection: "column",
                         textAlign: "center",
                         cursor: "pointer",
+                        borderRadius:"8px",
+                        border:"1px solid black"
                       }}
                       onClick={() => {
                         setIsopen(true);
