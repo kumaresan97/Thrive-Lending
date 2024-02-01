@@ -173,7 +173,7 @@ const Partners = (props) => {
           </div>
           <div
             className={styles.modalboxP}
-            style={{ maxHeight: 450, overflowY: "auto" }}
+            style={{ maxHeight: 400, overflowY: "auto" }}
             
           >
             {/* <p
