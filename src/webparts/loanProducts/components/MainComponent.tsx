@@ -4,7 +4,13 @@ import SPServices from "../../config/SPServices";
 import { ILoanproducts } from "../../config/config";
 import styles from "./LoanProducts.module.scss";
 import "./style.css";
-import { DefaultButton, Dialog, Label, Modal, PrimaryButton } from "@fluentui/react";
+import {
+  DefaultButton,
+  Dialog,
+  Label,
+  Modal,
+  PrimaryButton,
+} from "@fluentui/react";
 let ListName = "LoanProducts";
 const MainComponent = (props: any): JSX.Element => {
   const [loanProducts, setLoanProducts] = useState({
@@ -14,7 +20,7 @@ const MainComponent = (props: any): JSX.Element => {
   const [selectedItems, setSelectedItems] = useState({
     Title: "",
     Description: "",
-    Url:"",
+    Url: "",
   });
   const [isopen, setIsopen] = useState(false);
 
@@ -60,7 +66,7 @@ const MainComponent = (props: any): JSX.Element => {
             });
           }
         });
-      
+
         // datas.forEach((val: any) => {
         //   if (val.LoanTtype == "Standard Loan Products") {
         //     setLoanProducts({ ...loanProducts, Standard: val });
@@ -79,6 +85,20 @@ const MainComponent = (props: any): JSX.Element => {
       });
   };
 
+  // const convertURLsToLinks = (htmlText) => {
+  //   const linkRegex =
+  //     /(?:https?&#\d+;\/\/)?(?:www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^\s<>]*)?/g;
+
+  //   const replacedText = htmlText.replace(linkRegex, (match) => {
+  //     const url = match.startsWith("http")
+  //       ? match
+  //       : `https://${match.replace(/&\#\d+;/g, ":")}`;
+  //     return `<a href="${url}" target="_blank">${match}</a>`;
+  //   });
+
+  //   return replacedText;
+  // };
+
   useEffect(() => {
     getLoanproducts();
   }, []);
@@ -88,27 +108,34 @@ const MainComponent = (props: any): JSX.Element => {
       <div className={styles.mainSection}>
         <Modal
           isOpen={isopen}
+          onDismiss={() => setIsopen(false)}
           styles={{
             main: {
               width: "75%",
               borderRadius: "5px",
               padding: "16px 24px",
-              height:"75vh",
-              position:"relative"
+              height: "75vh",
+              position: "relative",
             },
           }}
         >
-          <h2 className={styles.modelh4}
-            style={{
-              // margin: "0px 0px 10px 0px",
-              // color: "#D29806",
-              // fontSize: "16px",
-            }}
+          <h2
+            className={styles.modelh4}
+            style={
+              {
+                // margin: "0px 0px 10px 0px",
+                // color: "#D29806",
+                // fontSize: "16px",
+              }
+            }
           >
             {selectedItems.Title}
           </h2>
-          <div className={styles.modalboxP} style={{ maxHeight: 192, overflowY: "auto" }}>
-            <p
+          <div
+            className={styles.modalboxP}
+            style={{ maxHeight: 450, overflowY: "auto" }}
+          >
+            {/* <p
               style={{
                 margin: 0,
                 color: "#000000",
@@ -117,24 +144,26 @@ const MainComponent = (props: any): JSX.Element => {
                  textAlign:"justify"
                 // fontWeight: 450,
               }}
-            >
-              {selectedItems.Description}
-            </p>
+            > */}
+            <div
+              dangerouslySetInnerHTML={{ __html: selectedItems.Description }}
+            />
+            {/* </p> */}
           </div>
 
           <div
             style={{
               display: "flex",
               justifyContent: "end",
-              gap:"10px",
-             // marginTop: "16px",
-             position:"absolute",
-             bottom:"15px",
-             right:"20px"
+              gap: "10px",
+              // marginTop: "16px",
+              position: "absolute",
+              bottom: "15px",
+              right: "20px",
             }}
           >
             <DefaultButton
-              text="Cancel"
+              text="Close"
               styles={{
                 root: {
                   background: "#8E8E8E",
@@ -142,7 +171,6 @@ const MainComponent = (props: any): JSX.Element => {
                   color: "#FFFFFF",
                   fontSize: "15px",
                   fontWeight: 400,
-                
                 },
                 rootHovered: {
                   color: "#FFFFFF",
@@ -153,7 +181,7 @@ const MainComponent = (props: any): JSX.Element => {
                 setIsopen(false);
               }}
             />
-            <PrimaryButton 
+            {/* <PrimaryButton 
               text="Open"
               iconProps={{ iconName: "OpenInNewWindow" }}
               styles={{
@@ -179,10 +207,9 @@ const MainComponent = (props: any): JSX.Element => {
                   window.open(selectedItems.Url, "_blank");
                 }
               }}
-            />
+            /> */}
           </div>
         </Modal>
-
 
         <h5 style={{ fontSize: "18px", margin: "14px 0px", fontWeight: 500 }}>
           Standard Loan Products
@@ -219,14 +246,14 @@ const MainComponent = (props: any): JSX.Element => {
                       flexDirection: "column",
                       textAlign: "center",
                       cursor: "pointer",
-                      borderRadius:"8px",
-                      border:"1px solid black"
+                      borderRadius: "8px",
+                      border: "1px solid black",
                     }}
                     onClick={() => {
                       setIsopen(true);
                       (selectedItems.Title = val.Title),
                         (selectedItems.Description = val.Description);
-                        (selectedItems.Url = val.URL);
+                      selectedItems.Url = val.URL;
                       setSelectedItems({ ...selectedItems });
                     }}
                   >
@@ -240,7 +267,7 @@ const MainComponent = (props: any): JSX.Element => {
                         justifyContent: "center",
                         // padding: "15px 15px",
                         //backgroundColor: "rgb(255,255,255,0.5)",
-                        backgroundColor:"transparent",
+                        backgroundColor: "transparent",
                         borderRadius: "5px",
                       }}
                     >
@@ -325,14 +352,15 @@ const MainComponent = (props: any): JSX.Element => {
                         flexDirection: "column",
                         textAlign: "center",
                         cursor: "pointer",
-                        borderRadius:"8px",
-                        border:"1px solid black"
+                        borderRadius: "8px",
+                        border: "1px solid black",
                       }}
                       onClick={() => {
                         setIsopen(true);
                         (selectedItems.Title = val.Title),
-                        (selectedItems.Url=val.URL)(
-                          (selectedItems.Description = val.Description));
+                          (selectedItems.Url = val.URL)(
+                            (selectedItems.Description = val.Description)
+                          );
                         setSelectedItems({ ...selectedItems });
                       }}
                     >
@@ -344,7 +372,7 @@ const MainComponent = (props: any): JSX.Element => {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          backgroundColor:"transparent",
+                          backgroundColor: "transparent",
                           // padding: "15px 15px",
                           //backgroundColor: "rgb(255,255,255,0.5)",
                           borderRadius: "5px",

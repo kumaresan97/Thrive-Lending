@@ -49,6 +49,20 @@ const Partners = (props) => {
       });
   };
 
+  // const convertURLsToLinks = (htmlText) => {
+  //   const linkRegex =
+  //     /(?:https?&#\d+;\/\/)?(?:www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^\s<>]*)?/g;
+
+  //   const replacedText = htmlText.replace(linkRegex, (match) => {
+  //     const url = match.startsWith("http")
+  //       ? match
+  //       : `https://${match.replace(/&\#\d+;/g, ":")}`;
+  //     return `<a href="${url}" target="_blank">${match}</a>`;
+  //   });
+
+  //   return replacedText;
+  // };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -76,8 +90,8 @@ const Partners = (props) => {
                       flexDirection: "column",
                       textAlign: "center",
                       cursor: "pointer",
-                      border:"1px solid black",
-                      borderRadius:"8px",
+                      border: "1px solid black",
+                      borderRadius: "8px",
                     }}
                     onClick={() => {
                       setIsopen(true);
@@ -93,13 +107,15 @@ const Partners = (props) => {
                         width: "175px",
                         height: "80px",
                         padding: "10px",
-                       // backgroundColor: "#efd9a5",
-                       backgroundColor:"transparent",
+                        // backgroundColor: "#efd9a5",
+                        backgroundColor: "transparent",
                         borderRadius: "5px",
                       }}
                     >
                       <img
-                        src={val.Image.length?val.Image[0].serverRelativeUrl:""}
+                        src={
+                          val.Image.length ? val.Image[0].serverRelativeUrl : ""
+                        }
                         style={{ width: "100%", height: "100%" }}
                       />
                     </div>
@@ -137,25 +153,30 @@ const Partners = (props) => {
         {/* Modal */}
         <Modal
           isOpen={isopen}
+          onDismiss={() => setIsopen(false)}
           styles={{
             main: {
               width: "75%",
               borderRadius: "5px",
               padding: "16px 24px",
-              height:"75vh",
-              position:"relative"
+              height: "75vh",
+              position: "relative",
             },
           }}
         >
-          <div  style={{ width: "120px", marginBottom: 14 }}>
+          <div style={{ width: "120px", marginBottom: 14 }}>
             <img
               src={selectedItems.Title}
               alt=""
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
-          <div className={styles.modalboxP} style={{ maxHeight: 400, overflowY: "auto" }}>
-            <p
+          <div
+            className={styles.modalboxP}
+            style={{ maxHeight: 450, overflowY: "auto" }}
+            
+          >
+            {/* <p
               style={{
                 margin: 0,
                 lineHeight: "22px",
@@ -167,7 +188,8 @@ const Partners = (props) => {
               }}
             >
               {selectedItems.Description}
-            </p>
+            </p> */}
+            <div dangerouslySetInnerHTML={{ __html: selectedItems.Description }}/>
           </div>
 
           <div
@@ -176,13 +198,13 @@ const Partners = (props) => {
               justifyContent: "end",
               gap: "10px",
               // marginTop: "100px",
-              position:"absolute",
-              bottom:"15px",
-              right:"20px"
+              position: "absolute",
+              bottom: "15px",
+              right: "20px",
             }}
           >
             <DefaultButton
-              text="Cancel"
+              text="Close"
               styles={{
                 root: {
                   background: "#8E8E8E",
@@ -204,17 +226,18 @@ const Partners = (props) => {
               iconProps={{ iconName: "OpenInNewWindow" }}
               styles={{
                 root: {
-                  background: "#D29602",
+                  background: "rgb(44, 104, 254)",
                   border: "none",
                   borderRadius: "4px",
-                  ":active":{
-                    background: "rgb(210 150 2 / 44%) !important",
-                    border:"1px solid  rgb(210 150 2 / 44%)  !important",
-                  }
+                  ":active": {
+                    background: "rgb(180, 201, 253 ) !important",
+                    border: "1px solid  rgb(210 150 2 / 44%)  !important",
+                    color: "#8E8E8E !important",
+                  },
                 },
                 rootHovered: {
                   border: "none",
-                  background: "#D29602",
+                  background: "rgb(44, 104, 254)",
                 },
                 flexContainer: {
                   flexDirection: "row-reverse",
@@ -223,7 +246,6 @@ const Partners = (props) => {
               onClick={() => {
                 if (selectedItems.Url) {
                   console.log(selectedItems.Url);
-                  
                   window.open(selectedItems.Url, "_blank");
                 }
               }}
