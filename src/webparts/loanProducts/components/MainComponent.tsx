@@ -133,7 +133,7 @@ const MainComponent = (props: any): JSX.Element => {
           </h2>
           <div
             className={styles.modalboxP}
-            style={{ maxHeight: 450, overflowY: "auto" }}
+            style={{ maxHeight: 400, overflowY: "auto" }}
           >
             {/* <p
               style={{
