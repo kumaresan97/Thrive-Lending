@@ -12,8 +12,8 @@
 }
 
 .Overall {
- // background-color: #fff8f8;
- background-color: white;
+  // background-color: #fff8f8;
+  background-color: white;
   padding: 10px;
   p {
     font-family: "Gotham-medium";
@@ -40,11 +40,14 @@
   }
 }
 .modalboxP {
-  p {
-    font-family: "Gotham-light";
-    font-weight: 600;
-    font-size: 16px;
-  }
+  margin: 0;
+  color: #000000;
+  line-height: 22px;
+  // font-size: 15px;
+  text-align: justify;
+  font-family: "Gotham-light";
+  // font-weight: 600;
+  font-size: 15px;
 }
 .modalboxP::-webkit-scrollbar {
   width: 13px;
