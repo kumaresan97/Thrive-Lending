@@ -85,20 +85,6 @@ const MainComponent = (props: any): JSX.Element => {
       });
   };
 
-  // const convertURLsToLinks = (htmlText) => {
-  //   const linkRegex =
-  //     /(?:https?&#\d+;\/\/)?(?:www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^\s<>]*)?/g;
-
-  //   const replacedText = htmlText.replace(linkRegex, (match) => {
-  //     const url = match.startsWith("http")
-  //       ? match
-  //       : `https://${match.replace(/&\#\d+;/g, ":")}`;
-  //     return `<a href="${url}" target="_blank">${match}</a>`;
-  //   });
-
-  //   return replacedText;
-  // };
-
   useEffect(() => {
     getLoanproducts();
   }, []);
@@ -108,7 +94,14 @@ const MainComponent = (props: any): JSX.Element => {
       <div className={styles.mainSection}>
         <Modal
           isOpen={isopen}
-          onDismiss={() => setIsopen(false)}
+          onDismiss={() => {
+            selectedItems.Description = "";
+            selectedItems.Title = "";
+            selectedItems.Url = "";
+            setSelectedItems({ ...selectedItems });
+
+            setIsopen(false);
+          }}
           styles={{
             main: {
               width: "75%",
@@ -178,6 +171,10 @@ const MainComponent = (props: any): JSX.Element => {
                 },
               }}
               onClick={() => {
+                selectedItems.Description = "";
+                selectedItems.Title = "";
+                selectedItems.Url = "";
+                setSelectedItems({ ...selectedItems });
                 setIsopen(false);
               }}
             />
