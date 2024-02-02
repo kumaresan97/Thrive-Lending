@@ -16,7 +16,7 @@ const Partners = (props) => {
     Url: "",
   });
   const [isopen, setIsopen] = useState(false);
-  
+
   const fetchData = async () => {
     SPServices.SPReadItems({
       Listname: ListName,
@@ -36,9 +36,9 @@ const Partners = (props) => {
             });
           });
           Datas.push({
-            Title: val.Title,
-            Description: val.Description,
-            URL: val.URL,
+            Title: val?.Title,
+            Description: val?.Description,
+            URL: val?.URL,
             Image: arrGetAttach,
           });
         });
@@ -48,20 +48,6 @@ const Partners = (props) => {
         console.log(err);
       });
   };
-
-  // const convertURLsToLinks = (htmlText) => {
-  //   const linkRegex =
-  //     /(?:https?&#\d+;\/\/)?(?:www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^\s<>]*)?/g;
-
-  //   const replacedText = htmlText.replace(linkRegex, (match) => {
-  //     const url = match.startsWith("http")
-  //       ? match
-  //       : `https://${match.replace(/&\#\d+;/g, ":")}`;
-  //     return `<a href="${url}" target="_blank">${match}</a>`;
-  //   });
-
-  //   return replacedText;
-  // };
 
   useEffect(() => {
     fetchData();
@@ -99,6 +85,7 @@ const Partners = (props) => {
                         (selectedItems.Url = val.URL)(
                           (selectedItems.Description = val.Description)
                         );
+
                       setSelectedItems({ ...selectedItems });
                     }}
                   >
@@ -153,7 +140,13 @@ const Partners = (props) => {
         {/* Modal */}
         <Modal
           isOpen={isopen}
-          onDismiss={() => setIsopen(false)}
+          onDismiss={() => {
+            selectedItems.Description = "";
+            selectedItems.Title = "";
+            selectedItems.Url = "";
+            setSelectedItems({ ...selectedItems });
+            setIsopen(false);
+          }}
           styles={{
             main: {
               width: "75%",
@@ -174,7 +167,6 @@ const Partners = (props) => {
           <div
             className={styles.modalboxP}
             style={{ maxHeight: 400, overflowY: "auto" }}
-            
           >
             {/* <p
               style={{
@@ -189,7 +181,9 @@ const Partners = (props) => {
             >
               {selectedItems.Description}
             </p> */}
-            <div dangerouslySetInnerHTML={{ __html: selectedItems.Description }}/>
+            <div
+              dangerouslySetInnerHTML={{ __html: selectedItems.Description }}
+            />
           </div>
 
           <div
@@ -218,6 +212,10 @@ const Partners = (props) => {
                 },
               }}
               onClick={() => {
+                selectedItems.Description = "";
+                selectedItems.Title = "";
+                selectedItems.Url = "";
+                setSelectedItems({ ...selectedItems });
                 setIsopen(false);
               }}
             />
