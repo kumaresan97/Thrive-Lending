@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import SPServices from "../../config/SPServices";
 import { Ipartners } from "../../config/config";
 import { DefaultButton, Modal, PrimaryButton } from "office-ui-fabric-react";
@@ -9,6 +9,7 @@ import styles from "./ThriveLending.module.scss";
 const ListName = "Partners";
 
 const Partners = (props) => {
+  const inputRef = useRef(null);
   const [Data, setData] = useState([]);
   const [selectedItems, setSelectedItems] = useState({
     Title: "",
@@ -81,11 +82,9 @@ const Partners = (props) => {
                     }}
                     onClick={() => {
                       setIsopen(true);
-                      (selectedItems.Title = val.Image[0].serverRelativeUrl),
-                        (selectedItems.Url = val.URL)(
-                          (selectedItems.Description = val.Description)
-                        );
-
+                      selectedItems.Title = val.Image[0].serverRelativeUrl;
+                      selectedItems.Url = val.URL;
+                      selectedItems.Description = val.Description;
                       setSelectedItems({ ...selectedItems });
                     }}
                   >
@@ -157,15 +156,22 @@ const Partners = (props) => {
             },
           }}
         >
-          <div style={{ width: "120px", marginBottom: 14 }}>
+          <div style={{ width: "120px", marginBottom: 14, display: "flex" }}>
             <img
               src={selectedItems.Title}
               alt=""
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
+            <input
+              ref={inputRef}
+              type="text"
+              style={{ visibility: "hidden" }}
+            ></input>
           </div>
+
           <div
-            className={styles.modalboxP}
+            className={`${styles.modalboxP}`}
+            id="modalboxP"
             style={{ maxHeight: 400, overflowY: "auto" }}
           >
             {/* <p

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import SPServices from "../../config/SPServices";
 import { ILoanproducts } from "../../config/config";
 import styles from "./LoanProducts.module.scss";
@@ -13,6 +13,7 @@ import {
 } from "@fluentui/react";
 let ListName = "LoanProducts";
 const MainComponent = (props: any): JSX.Element => {
+  const inputRef = useRef(null);
   const [loanProducts, setLoanProducts] = useState({
     Standard: [],
     nonStandard: [],
@@ -98,6 +99,7 @@ const MainComponent = (props: any): JSX.Element => {
             selectedItems.Description = "";
             selectedItems.Title = "";
             selectedItems.Url = "";
+       
             setSelectedItems({ ...selectedItems });
 
             setIsopen(false);
@@ -112,6 +114,7 @@ const MainComponent = (props: any): JSX.Element => {
             },
           }}
         >
+          <div style={{ width: "120px", marginBottom: 14, display:"flex" }}>
           <h2
             className={styles.modelh4}
             style={
@@ -124,6 +127,8 @@ const MainComponent = (props: any): JSX.Element => {
           >
             {selectedItems.Title}
           </h2>
+          <input ref={inputRef} type="text" style={{visibility:"hidden"}} ></input>
+          </div>
           <div
             className={styles.modalboxP}
             style={{ maxHeight: 400, overflowY: "auto" }}
@@ -139,6 +144,7 @@ const MainComponent = (props: any): JSX.Element => {
               }}
             > */}
             <div
+            className={styles.content}
               dangerouslySetInnerHTML={{ __html: selectedItems.Description }}
             />
             {/* </p> */}
