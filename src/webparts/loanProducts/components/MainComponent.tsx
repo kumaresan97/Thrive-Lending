@@ -93,15 +93,14 @@ const MainComponent = (props: any): JSX.Element => {
   return (
     <>
       <div className={styles.mainSection}>
+
         <Modal
           isOpen={isopen}
           onDismiss={() => {
             selectedItems.Description = "";
             selectedItems.Title = "";
             selectedItems.Url = "";
-       
             setSelectedItems({ ...selectedItems });
-
             setIsopen(false);
           }}
           styles={{
@@ -115,34 +114,14 @@ const MainComponent = (props: any): JSX.Element => {
           }}
         >
           <div style={{ width: "120px", marginBottom: 14, display:"flex" }}>
-          <h2
-            className={styles.modelh4}
-            style={
-              {
-                // margin: "0px 0px 10px 0px",
-                // color: "#D29806",
-                // fontSize: "16px",
-              }
-            }
-          >
+          <h2 className={styles.modelh4}>
             {selectedItems.Title}
           </h2>
           <input ref={inputRef} type="text" style={{visibility:"hidden"}} ></input>
           </div>
           <div
             className={styles.modalboxP}
-            style={{ maxHeight: 400, overflowY: "auto" }}
           >
-            {/* <p
-              style={{
-                margin: 0,
-                color: "#000000",
-                lineHeight: "22px",
-                 fontSize: "15px",
-                 textAlign:"justify"
-                // fontWeight: 450,
-              }}
-            > */}
             <div
             className={styles.content}
               dangerouslySetInnerHTML={{ __html: selectedItems.Description }}
@@ -151,15 +130,7 @@ const MainComponent = (props: any): JSX.Element => {
           </div>
 
           <div
-            style={{
-              display: "flex",
-              justifyContent: "end",
-              gap: "10px",
-              // marginTop: "16px",
-              position: "absolute",
-              bottom: "15px",
-              right: "20px",
-            }}
+          className={styles.btnSection}
           >
             <DefaultButton
               text="Close"
@@ -184,33 +155,7 @@ const MainComponent = (props: any): JSX.Element => {
                 setIsopen(false);
               }}
             />
-            {/* <PrimaryButton 
-              text="Open"
-              iconProps={{ iconName: "OpenInNewWindow" }}
-              styles={{
-                root: {
-                  background: "#D29602",
-                  border: "none",
-                  borderRadius: "4px",
-                  ":active":{
-                    background: "rgb(210 150 2 / 44%) !important",
-                    border:"1px solid  rgb(210 150 2 / 44%)  !important",
-                  }
-                },
-                rootHovered: {
-                  border: "none",
-                  background: "#D29602",
-                },
-                flexContainer: {
-                  flexDirection: "row-reverse",
-                },
-              }}
-              onClick={() => {
-                if (selectedItems.Url) {                  
-                  window.open(selectedItems.Url, "_blank");
-                }
-              }}
-            /> */}
+         
           </div>
         </Modal>
 
@@ -231,13 +176,6 @@ const MainComponent = (props: any): JSX.Element => {
               return (
                 <div
                   className={styles.Box}
-                  //   style={{
-                  //     width: "24%",
-                  //     background: linear-gradient(to left, #D29602, #D29602 "50%"),
-                  //     margin: "0px  10px  10px 0px",
-                  //     height: "180px",
-                  //     borderRadius: "5px",
-                  //   }}
                 >
                   <div
                     style={{
@@ -268,8 +206,6 @@ const MainComponent = (props: any): JSX.Element => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        // padding: "15px 15px",
-                        //backgroundColor: "rgb(255,255,255,0.5)",
                         backgroundColor: "transparent",
                         borderRadius: "5px",
                       }}
@@ -283,8 +219,6 @@ const MainComponent = (props: any): JSX.Element => {
                           height: "40px",
                           maxWidth: "100%",
                           maxHeight: "100%",
-
-                          //   height: "100%",
                           objectFit: "cover",
                         }}
                       />
@@ -376,8 +310,7 @@ const MainComponent = (props: any): JSX.Element => {
                           justifyContent: "center",
                           alignItems: "center",
                           backgroundColor: "transparent",
-                          // padding: "15px 15px",
-                          //backgroundColor: "rgb(255,255,255,0.5)",
+                        
                           borderRadius: "5px",
                         }}
                       >
@@ -392,7 +325,7 @@ const MainComponent = (props: any): JSX.Element => {
                             height: "40px",
                             maxWidth: "100%",
                             maxHeight: "100%",
-                            // height: "%",
+                         
                             objectFit: "cover",
                           }}
                         />
@@ -401,8 +334,7 @@ const MainComponent = (props: any): JSX.Element => {
                         style={{
                           margin: "5px 0px 0px 0px",
                           color: "#666155",
-                          // fontSize: "16px",
-                          // fontWeight: 600,
+                       
                         }}
                       >
                         {val.Title}

@@ -93,7 +93,7 @@ const Partners = (props) => {
                         width: "175px",
                         height: "80px",
                         padding: "10px",
-                        // backgroundColor: "#efd9a5",
+                       
                         backgroundColor: "transparent",
                         borderRadius: "5px",
                       }}
@@ -109,8 +109,6 @@ const Partners = (props) => {
                       style={{
                         margin: "5px 0px 0px 0px",
                         color: "#666155",
-                        // fontWeight: 600,
-                        // fontSize: "18px",
                       }}
                     >
                       {val.Title}
@@ -136,7 +134,7 @@ const Partners = (props) => {
           )}
         </div>
 
-        {/* Modal */}
+       
         <Modal
           isOpen={isopen}
           onDismiss={() => {
@@ -172,7 +170,7 @@ const Partners = (props) => {
           <div
             className={`${styles.modalboxP}`}
             id="modalboxP"
-            style={{ maxHeight: 400, overflowY: "auto" }}
+            // style={{ maxHeight: 400, overflowY: "auto" }}
           >
             {/* <p
               style={{
@@ -192,16 +190,15 @@ const Partners = (props) => {
             />
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "end",
-              gap: "10px",
-              // marginTop: "100px",
-              position: "absolute",
-              bottom: "15px",
-              right: "20px",
-            }}
+          <div className={styles.btnSection}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "end",
+            //   gap: "10px",
+            //   position: "absolute",
+            //   bottom: "15px",
+            //   right: "20px",
+            // }}
           >
             <DefaultButton
               text="Close"
@@ -256,7 +253,7 @@ const Partners = (props) => {
             />
           </div>
         </Modal>
-        {/* Modal */}
+     
       </div>
     </>
   );
