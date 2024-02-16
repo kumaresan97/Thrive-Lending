@@ -154,7 +154,7 @@ const Partners = (props) => {
             },
           }}
         >
-          <div style={{ width: "120px", marginBottom: 14, display: "flex" }}>
+          <div style={{ width: "113px", marginBottom: 14, display: "flex" }}>
             <img
               src={selectedItems.Title}
               alt=""
