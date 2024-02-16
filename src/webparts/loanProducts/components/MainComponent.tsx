@@ -113,7 +113,7 @@ const MainComponent = (props: any): JSX.Element => {
             },
           }}
         >
-          <div style={{ width: "120px", marginBottom: 14, display:"flex" }}>
+          <div style={{ width: "500px", marginBottom: 14, display:"flex" }}>
           <h2 className={styles.modelh4}>
             {selectedItems.Title}
           </h2>
