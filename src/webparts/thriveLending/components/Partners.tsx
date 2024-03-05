@@ -25,11 +25,10 @@ const Partners = (props) => {
       Listname: ListName,
       Select: "*,AttachmentFiles",
       Expand: "AttachmentFiles",
-      Orderby: "Created",
-      Orderbydecorasc: false,
+      Orderby: "sequence",
+      Orderbydecorasc: true,
     })
       .then((items) => {
-         items.sort((a:any,b:any)=>a.sequence-b.sequence )
         let Datas: Ipartners[] = [];
         items.forEach((val: any) => {
             console.log(val,"val");

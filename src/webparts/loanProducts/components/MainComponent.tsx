@@ -30,8 +30,8 @@ const MainComponent = (props: any): JSX.Element => {
       Listname: ListName,
       Select: "*,AttachmentFiles",
       Expand: "AttachmentFiles",
-      Orderby: "Created",
-      Orderbydecorasc: false,
+      Orderby: "sequence",
+      Orderbydecorasc: true,
     })
       .then((res: any) => {
         let standarddatas: ILoanproducts[] = [];
@@ -65,8 +65,6 @@ const MainComponent = (props: any): JSX.Element => {
           }
         });
 
-        standarddatas = [...standarddatas].sort((a:any,b:any)=>a.sequence-b.sequence )
-        nonstandarddatas = [...nonstandarddatas].sort((a:any,b:any)=>a.sequence-b.sequence )
         setLoanProducts({
           ...loanProducts,
           Standard: standarddatas,
