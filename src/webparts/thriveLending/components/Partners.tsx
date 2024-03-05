@@ -11,10 +11,12 @@ const ListName = "Partners";
 const Partners = (props) => {
   const inputRef = useRef(null);
   const [Data, setData] = useState([]);
+  console.log(Data)
   const [selectedItems, setSelectedItems] = useState({
     Title: "",
     Description: "",
     Url: "",
+
   });
   const [isopen, setIsopen] = useState(false);
 
@@ -27,8 +29,10 @@ const Partners = (props) => {
       Orderbydecorasc: false,
     })
       .then((items) => {
+         items.sort((a:any,b:any)=>a.sequence-b.sequence )
         let Datas: Ipartners[] = [];
         items.forEach((val: any) => {
+            console.log(val,"val");
           let arrGetAttach = [];
           val.AttachmentFiles.forEach((data: any) => {
             arrGetAttach.push({
@@ -41,6 +45,8 @@ const Partners = (props) => {
             Description: val?.Description,
             URL: val?.URL,
             Image: arrGetAttach,
+            sequence:val?.sequence,
+          
           });
         });
         setData([...Datas]);
@@ -93,7 +99,6 @@ const Partners = (props) => {
                         width: "175px",
                         height: "80px",
                         padding: "10px",
-                       
                         backgroundColor: "transparent",
                         borderRadius: "5px",
                       }}
@@ -134,7 +139,6 @@ const Partners = (props) => {
           )}
         </div>
 
-       
         <Modal
           isOpen={isopen}
           onDismiss={() => {
@@ -190,7 +194,8 @@ const Partners = (props) => {
             />
           </div>
 
-          <div className={styles.btnSection}
+          <div
+            className={styles.btnSection}
             // style={{
             //   display: "flex",
             //   justifyContent: "end",
@@ -253,7 +258,6 @@ const Partners = (props) => {
             />
           </div>
         </Modal>
-     
       </div>
     </>
   );

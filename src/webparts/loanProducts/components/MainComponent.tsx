@@ -50,9 +50,7 @@ const MainComponent = (props: any): JSX.Element => {
               Description: val?.Description,
               URL: val?.URL,
               Image: arrGetAttach,
-
-              //   Image: JSON.parse(val.ProductIcon).serverRelativeUrl,
-              //   Image: "",
+              sequence:val?.sequence,
               LoanTtype: val.LoanTypes,
             });
           } else {
@@ -60,21 +58,15 @@ const MainComponent = (props: any): JSX.Element => {
               Title: val?.Title,
               Description: val?.Description,
               URL: val?.URL,
-              //   Image: JSON.parse(val.ProductIcon).serverRelativeUrl,
               Image: arrGetAttach,
-              //   Image: "",
               LoanTtype: val?.LoanTypes,
+              sequence:val?.sequence,
             });
           }
         });
 
-        // datas.forEach((val: any) => {
-        //   if (val.LoanTtype == "Standard Loan Products") {
-        //     setLoanProducts({ ...loanProducts, Standard: val });
-        //   } else {
-        //     setLoanProducts({ ...loanProducts, nonStandard: val });
-        //   }
-        // });
+        standarddatas = [...standarddatas].sort((a:any,b:any)=>a.sequence-b.sequence )
+        nonstandarddatas = [...nonstandarddatas].sort((a:any,b:any)=>a.sequence-b.sequence )
         setLoanProducts({
           ...loanProducts,
           Standard: standarddatas,
